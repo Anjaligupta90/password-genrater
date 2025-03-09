@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+      [data-cpymsg] {
+          display: none; /* Initially hidden */
+      }
+
+      [data-cpymsg].active {
+          display: inline; /* Show when active */
+      }
+
+      #container
+      {
+        background-color:rgb(255,255,255,0.35);
+        border-radius: 1rem;
+        border: 1px solid rgba(255,255,255,0.45);
+      }
+      #passwordLengthSlider {
+    appearance: none;
+    width:100%;
+    height: 0.75rem;
+    cursor: pointer;
+    background-color: rgba(12, 132, 201, 0.45);
+    border-radius: 1rem;
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+    background-image: linear-gradient(rgba(202, 53, 135, 0.45),rgba(211, 81, 167, 0.45));
+    background-repeat: no-repeat;
+    border:none;
+    outline:none;
+    z-index:-1;
+
+      }
+
+    #passwordLengthSlider::-webkit-slider-thumb {
+    position:relative;
+    z-index:1;
+    appearance: none;
+    height:2rem;
+    width:2rem;
+    border-radius: 50%;
+    background-color: rgba(92, 90, 212, 0.5);
+    cursor:pointer;
+    margin-top: -3px;
+    box-shadow: 0px 0px 20px 0px rgba(138, 124, 34, 0.5);
+    transition: all 100ms ease-in;
+}
+
+  </style>
+
+</head>
+<body class=" flex items-center justify-center h-screen bg-green-600">
+
+    <div class="p-8 w-96" id="container">
+        <h1 class="text-2xl font-bold mb-4 text-center">Password Generator</h1>
+ 
+     <div class="flex ">
+        <textarea id="password" class="w-full h-12 border border-gray-300 border-r-0 rounded-md rounded-r-none p-2 mb-4 outline-none" readonly>password</textarea>
+        <!-- copy krne wala -->
+
+        <button class="copy bg-white h-12 border border-gray-300 border-l-0 rounded-md rounded-l-none relative" id="icon">
+            <span data-cpymsg class="absolute top-5 left-[-20] transform -translate-y-full text-blue-400"></span>
+             <!-- Khali rakha -->
+            <i class="fa-regular fa-copy colo text-blue-400 p-5"></i>
+        </button>
+        
+     </div>
+
+      <!-- ye filteration wala div -->
+     <div class="inputcontener">
+        <!-- len -->
+     <div class="length">
+        <p>Password Length</p>
+         <span class="lengthValue">0</span>
+     </div>
+     <!-- len ka button -->
+     <div class="slider bg-white p-3 m-b- rounded-lg shadow-md">
+        <input type="range" min="1" max="20" step="1" id="passwordLengthSlider"> 
+     </div>
+    </div>
+
+     <!-- box --> 
+       <div >
+        <input type="checkbox" id="upparcase">
+        <label for="upparcase">Include upparcase letters</label>
+       </div>
+
+       <div>
+        <input type="checkbox" id="lowercase">
+        <label for="lowercase">Include lowercase letters</label>
+       </div>
+
+       <div>
+        <input type="checkbox" id="number">
+        <label for="number">Include numbers</label>
+       </div>
+
+       <div>
+        <input type="checkbox" id="symbol">
+        <label for="symbol">Include symbols</label>
+       </div>
+
+     <!-- srength -->
+     <div class="flex items-center p-5 justify-between">
+        <span class="text-lg font-semibold">Strength</span>
+        <div class="w-8 h-8 rounded-full" data-indicator></div>
+    </div>
+
+     <div>  
+    <button id="generate" class="w-full bg-green-600 text-white font-semibold py-2 rounded-md hover:bg-green-500">Generate Password</button>
+    </div>
+</div>
+    <script src="password.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+</html>
